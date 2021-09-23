@@ -16,13 +16,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * Private functions
-     * */
-    private fun navigateToNetworkTest() {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.mainActivityFragmentContainer, NetworkTestFragment.newInstance(), NetworkTestFragment.TAG)
-                .commit()
-    }
+
 }

@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.exampleapp.recycleBankMovement.HeaderAdapter
@@ -17,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.exampleapp.recycleBankMovement.MovementListViewModel
 import com.example.exampleapp.recycleBankMovement.MovementsListViewModelFactory
 import com.example.iriscubeapp.R
-import sampleData
+import SampleData
 
 const val FLOWER_ID = "movement id"
 
@@ -34,15 +32,6 @@ class FirstFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_first, container, false)
-
-        /*val nextBtn : Button = view.findViewById(R.id.next)
-        nextBtn.setOnClickListener {
-            val fragment = SecondFragment() //navigate to second fragment
-            //val transaction = fragmentManager?.beginTransaction()
-            val ft: FragmentTransaction? = activity?.supportFragmentManager?.beginTransaction()
-            ft?.setCustomAnimations(R.anim.slide_in,R.anim.fade_out)
-            ft?.replace(R.id.mainActivityFragmentContainer,fragment)?.commit()
-        }*/
         val headerAdapter = HeaderAdapter()
         val movementAdapter = RecycleMovementAdapter { sampleData -> adapterOnClick(sampleData) }
         val recyclerView: RecyclerView = view.findViewById(R.id.recycle_view)
@@ -50,10 +39,9 @@ class FirstFragment : Fragment() {
         recyclerView.adapter = movementAdapter
 
 
-
         movementsListViewModel.movementData.observe(viewLifecycleOwner, {
             it?.let {
-                movementAdapter.submitList(it as MutableList<sampleData>)
+                movementAdapter.submitList(it as MutableList<SampleData>)
                 headerAdapter.updateMovementCount(it.size)
             }
         })
@@ -67,10 +55,10 @@ class FirstFragment : Fragment() {
     }
 
 
-    private fun adapterOnClick(flower: sampleData) {
+    private fun adapterOnClick(movement: SampleData) {
         /*
-        val intent = Intent(this, FlowerDetailActivity()::class.java)
-        intent.putExtra(FLOWER_ID, flower.id)
+        val intent = Intent(this, MovementDetailActivity()::class.java)
+        intent.putExtra(MOVEMENT_ID, movement.id)
         startActivity(intent)
         */
 
@@ -79,8 +67,8 @@ class FirstFragment : Fragment() {
     /* Adds sampleMovementData to MovementList when FAB is clicked. */
     private fun fabOnClick() {
         println("Fab Pressed")
-        //val intent = Intent(this, AddFlowerActivity::class.java)
-        //startActivityForResult(intent, newFlowerActivityRequestCode)
+        //val intent = Intent(this, AddMovementActivity::class.java)
+        //startActivityForResult(intent, newMovementActivityRequestCode)
     }
 
 
@@ -88,7 +76,7 @@ class FirstFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
-        /* Inserts flower into viewModel. */
+        /* Inserts movement into viewModel. */
         if (requestCode == newMovementActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.let {
                 val movementName = "t"

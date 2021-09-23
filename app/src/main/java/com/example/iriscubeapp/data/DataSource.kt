@@ -3,9 +3,6 @@ import android.content.Context
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.Volley
 
 /* Handles operations on MovementLiveData and holds details about it. */
 class DataSource(resources: Resources,context: Context) {
@@ -13,7 +10,7 @@ class DataSource(resources: Resources,context: Context) {
     private val movementLiveData = MutableLiveData(initialMovementList)
 
     /* Adds movement to liveData and posts value. */
-    fun addMovement(movement: sampleData) {
+    fun addMovement(movement: SampleData) {
         val currentList = movementLiveData.value
         if (currentList == null) {
             movementLiveData.postValue(listOf(movement))
@@ -25,7 +22,7 @@ class DataSource(resources: Resources,context: Context) {
     }
 
     /* Removes movement from liveData and posts value. */
-    fun removeMovement(movement: sampleData) {
+    fun removeMovement(movement: SampleData) {
         val currentList = movementLiveData.value
         if (currentList != null) {
             val updatedList = currentList.toMutableList()
@@ -35,14 +32,14 @@ class DataSource(resources: Resources,context: Context) {
     }
 
     /* Returns movement given an ID. */
-    fun getMovementForId(id: Long): sampleData? {
+    fun getMovementForId(id: Long): SampleData? {
         movementLiveData.value?.let { movements ->
              movements.firstOrNull{ id == id}
         }
         return null
     }
 
-    fun getMovementList(): LiveData<List<sampleData>> {
+    fun getMovementList(): LiveData<List<SampleData>> {
         return movementLiveData
     }
 

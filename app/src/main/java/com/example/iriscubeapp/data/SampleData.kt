@@ -1,7 +1,7 @@
 
 import androidx.annotation.DrawableRes
 
-data class sampleData (
+data class SampleData (
     val id: Long,
     val title: String,
     val value: Double,

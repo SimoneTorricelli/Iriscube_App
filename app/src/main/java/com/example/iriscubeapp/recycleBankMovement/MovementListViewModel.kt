@@ -3,20 +3,20 @@ import DataSource
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import sampleData
+import SampleData
 import kotlin.random.Random
 class MovementListViewModel(val dataSource: DataSource) : ViewModel() {
 
     val movementData = dataSource.getMovementList()
 
-    /* If the name and description are present, create new Flower and add it to the datasource */
+    /* If the name and description are present, create new Movement and add it to the datasource */
     fun insertMovement(movementTitle: String?, movementDescription: String?,movementValue: Double?) {
         if (movementTitle == null || movementDescription == null || movementValue == null) {
             return
         }
 
         //val image : Int? = null
-        val newMovement = sampleData(
+        val newMovement = SampleData(
             Random.nextLong(),
             movementTitle,
             movementValue,
@@ -24,7 +24,7 @@ class MovementListViewModel(val dataSource: DataSource) : ViewModel() {
             movementDescription,
         )
 
-        //dataSource.addFlower(newFlower)
+        //dataSource.addMovement(newMovement)
     }
 }
 

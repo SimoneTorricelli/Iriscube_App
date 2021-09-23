@@ -23,11 +23,10 @@
         android:layout_height="21dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
-        android:autoSizeTextType="uniform"
         android:text="null"
         android:textAlignment="textStart"
         android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/movement_image"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,7 +48,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:autoSizeTextType="uniform"
         android:text="null"
         android:textColor="@color/purple_500"
         android:textSize="20dp"

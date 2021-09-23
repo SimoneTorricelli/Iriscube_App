@@ -9,20 +9,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iriscubeapp.R
-import sampleData
+import SampleData
 
 
-class RecycleMovementAdapter(private val onClick: (sampleData) -> Unit) :
-    ListAdapter<sampleData, RecycleMovementAdapter.MovementViewHolder>(MovementDiffCallback) {
+class RecycleMovementAdapter(private val onClick: (SampleData) -> Unit) :
+    ListAdapter<SampleData, RecycleMovementAdapter.MovementViewHolder>(MovementDiffCallback) {
 
     /* ViewHolder for sampleMovementData, takes in the inflated view and the onClick behavior. */
-    class MovementViewHolder(itemView: View, val onClick: (sampleData) -> Unit) :
+    class MovementViewHolder(itemView: View, val onClick: (SampleData) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private val movementTitle: TextView = itemView.findViewById(R.id.movement_title)
         private val movementImageView: ImageView = itemView.findViewById(R.id.movement_image)
         private val movementDescription: TextView = itemView.findViewById(R.id.movement_description)
         private val movementValue: TextView = itemView.findViewById(R.id.movement_value)
-        private var currentMovement: sampleData? = null
+        private var currentMovement: SampleData? = null
 
         init {
             itemView.setOnClickListener {
@@ -33,10 +33,9 @@ class RecycleMovementAdapter(private val onClick: (sampleData) -> Unit) :
             }
         }
 
-        /* Bind flower name and image. */
-        fun bind(movement: sampleData) {
-            currentMovement = movement
 
+        fun bind(movement: SampleData) {
+            currentMovement = movement
             movementTitle.text = movement.title
             movementDescription.text = movement.description
             movementValue.text = movement.value.toString() + " €"
@@ -49,14 +48,13 @@ class RecycleMovementAdapter(private val onClick: (sampleData) -> Unit) :
         }
     }
 
-    /* Creates and inflates view and return FlowerViewHolder. */
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovementViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movement_data, parent, false)
         return MovementViewHolder(view, onClick)
     }
 
-    /* Gets current flower and uses it to bind view. */
     override fun onBindViewHolder(holder: MovementViewHolder, position: Int) {
         val movement = getItem(position)
         holder.bind(movement)
@@ -64,12 +62,12 @@ class RecycleMovementAdapter(private val onClick: (sampleData) -> Unit) :
     }
 }
 
-object MovementDiffCallback : DiffUtil.ItemCallback<sampleData>() {
-    override fun areItemsTheSame(oldItem: sampleData, newItem: sampleData): Boolean {
+object MovementDiffCallback : DiffUtil.ItemCallback<SampleData>() {
+    override fun areItemsTheSame(oldItem: SampleData, newItem: SampleData): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: sampleData, newItem: sampleData): Boolean {
+    override fun areContentsTheSame(oldItem: SampleData, newItem: SampleData): Boolean {
         return oldItem.id == newItem.id
     }
 }
