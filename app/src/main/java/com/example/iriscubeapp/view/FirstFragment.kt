@@ -18,6 +18,7 @@ import com.example.iriscubeapp.R
 import SampleData
 import android.view.animation.AnimationUtils
 import androidx.cardview.widget.CardView
+import androidx.core.view.get
 import kotlinx.android.synthetic.main.fragment_first.*
 
 const val FLOWER_ID = "movement id"
@@ -49,7 +50,6 @@ class FirstFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recycle_view)
         recyclerView?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = movementAdapter
-
 
 
         movementsListViewModel.movementData.observe(viewLifecycleOwner, {
