@@ -16,6 +16,9 @@ import com.example.exampleapp.recycleBankMovement.MovementListViewModel
 import com.example.exampleapp.recycleBankMovement.MovementsListViewModelFactory
 import com.example.iriscubeapp.R
 import SampleData
+import android.view.animation.AnimationUtils
+import androidx.cardview.widget.CardView
+import kotlinx.android.synthetic.main.fragment_first.*
 
 const val FLOWER_ID = "movement id"
 
@@ -32,11 +35,21 @@ class FirstFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_first, container, false)
+
+        val ttb = AnimationUtils.loadAnimation(context,R.anim.start_anim)
+        val stb = AnimationUtils.loadAnimation(context,R.anim.start_anim_cardview2)
+        val cardView : CardView = view.findViewById(R.id.cardView)
+        val cardViewMoney : CardView = view.findViewById(R.id.cardViewMoney)
+
+        cardView.startAnimation(ttb)
+        cardViewMoney.startAnimation(stb)
+
         val headerAdapter = HeaderAdapter()
         val movementAdapter = RecycleMovementAdapter { sampleData -> adapterOnClick(sampleData) }
         val recyclerView: RecyclerView = view.findViewById(R.id.recycle_view)
         recyclerView?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = movementAdapter
+
 
 
         movementsListViewModel.movementData.observe(viewLifecycleOwner, {
@@ -56,6 +69,7 @@ class FirstFragment : Fragment() {
 
 
     private fun adapterOnClick(movement: SampleData) {
+
         /*
         val intent = Intent(this, MovementDetailActivity()::class.java)
         intent.putExtra(MOVEMENT_ID, movement.id)
