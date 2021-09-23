@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
 
 
 fun MovementDatas(resources: Resources,context: Context): List<SampleData> {
-    val url = "https://mocki.io/v1/08bdd00f-c17f-4f9a-a27f-f2ec437781b9"
+    val url = "https://mocki.io/v1/4da288b1-5179-4202-8cde-9fb6895f7c69"
     var list = ArrayList<SampleData>()
     val que = Volley.newRequestQueue(context)
     val jsonObjectRequest = JsonArrayRequest(
