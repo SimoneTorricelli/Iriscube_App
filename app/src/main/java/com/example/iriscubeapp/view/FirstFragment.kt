@@ -28,7 +28,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentTransaction
+
 import androidx.lifecycle.observe
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -69,6 +69,9 @@ class FirstFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recycle_view)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = movementAdapter
+        recyclerView.apply {
+            //edgeEffectFactory = BounceEdgeEffectFactory()
+        }
 
 
 

@@ -19,6 +19,7 @@
 
         <!--text view for displaying course name-->
         <TextView
+            android:fontFamily="@font/poppins_bold"
             android:id="@+id/movement_title2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
         <!--text view for displaying course tracks-->
 
         <TextView
+            android:fontFamily="@font/poppins_medium"
             android:id="@+id/movement_description2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,6 +48,7 @@
 
         <!--text view for displaying course duration-->
         <TextView
+            android:fontFamily="@font/poppins_medium"
             android:id="@+id/movement_value2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,6 +70,8 @@
             android:layout_below="@id/idIVCourse"
             android:layout_margin="10dp"
             android:text="Dismiss dialog"
+            android:fontFamily="@font/poppins_medium"
+
             android:textAllCaps="false" />
 
     </RelativeLayout>

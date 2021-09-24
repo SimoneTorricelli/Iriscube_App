@@ -12,7 +12,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginLeft="15dp"
-
+        android:foregroundGravity="center"
         android:layout_marginBottom="15dp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/poppins_bold"
         android:id="@+id/movement_title"
         android:layout_width="28dp"
         android:layout_height="21dp"
@@ -33,6 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/poppins_regular"
         android:id="@+id/movement_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/movement_title" />
 
     <TextView
+        android:fontFamily="@font/poppins_bold"
         android:id="@+id/movement_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
