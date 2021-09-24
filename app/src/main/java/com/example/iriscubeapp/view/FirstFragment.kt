@@ -67,7 +67,7 @@ class FirstFragment : Fragment() {
         val headerAdapter = HeaderAdapter()
         val movementAdapter = RecycleMovementAdapter { sampleData -> adapterOnClick(sampleData)}
         val recyclerView: RecyclerView = view.findViewById(R.id.recycle_view)
-        recyclerView?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = movementAdapter
 
 
