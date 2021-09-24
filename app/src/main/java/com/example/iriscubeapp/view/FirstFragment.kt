@@ -115,7 +115,7 @@ class FirstFragment : Fragment() {
                 coverConstraint.applyTo(constraintLayout)
 
                 val anim = ValueAnimator()
-                anim.setIntValues(Color.BLACK, Color.WHITE)
+                anim.setIntValues(Color.WHITE, Color.BLACK)
                 anim.setEvaluator(ArgbEvaluator())
                 anim.addUpdateListener {
                     textView.setTextColor(it.animatedValue as Int)
@@ -129,7 +129,7 @@ class FirstFragment : Fragment() {
                 initialConstraint.applyTo(constraintLayout)
 
                 val anim = ValueAnimator()
-                anim.setIntValues(Color.WHITE, Color.BLACK)
+                anim.setIntValues(Color.BLACK, Color.WHITE)
                 anim.setEvaluator(ArgbEvaluator())
                 anim.addUpdateListener {
                     textView.setTextColor(it.animatedValue as Int)

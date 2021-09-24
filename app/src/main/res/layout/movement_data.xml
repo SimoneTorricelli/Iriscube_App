@@ -8,13 +8,15 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:backgroundTint="@color/light_brown"
         android:id="@+id/movement_image"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginLeft="15dp"
         android:foregroundGravity="center"
         android:layout_marginBottom="15dp"
-        android:background="@color/black"
+        android:padding="10dp"
+        android:background="@drawable/primary_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +28,7 @@
         android:layout_height="21dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
-        android:text="asdasda"
+        android:text="null"
         android:textSize="15sp"
         android:textAlignment="textStart"
         app:layout_constraintStart_toEndOf="@+id/movement_image"

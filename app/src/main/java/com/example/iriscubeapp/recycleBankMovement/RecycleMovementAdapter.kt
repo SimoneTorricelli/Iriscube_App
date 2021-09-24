@@ -39,7 +39,7 @@ class RecycleMovementAdapter(private val onClick: (SampleData) -> Unit) :
             movementTitle.text = movement.title
             movementDescription.text = movement.description
             movementValue.text = movement.value.toString() + " €"
-            movementImageView.setImageResource(R.drawable.abc_vector_test)
+            movementImageView.setImageResource(R.drawable.ic_action_name)
             //if (movement.image != null) {
                // movementImageView.setImageResource(movement.image)
             //} else {
