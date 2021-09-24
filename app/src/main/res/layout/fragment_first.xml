@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.FirstFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/fragment_first">
 
 
     <TextView
@@ -55,6 +56,7 @@
 
             <TextView
                 android:padding="12dp"
+                android:id="@+id/textConto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|left"
@@ -73,7 +75,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/iban"/>
 
             <ImageView
                 android:id="@+id/imageView"
@@ -101,6 +104,7 @@
             app:cardUseCompatPadding="false">
 
             <TextView
+                android:id="@+id/money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal"
@@ -133,7 +137,7 @@
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
-
+        android:id="@+id/card_recycle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

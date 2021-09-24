@@ -16,19 +16,32 @@ import com.example.exampleapp.recycleBankMovement.MovementListViewModel
 import com.example.exampleapp.recycleBankMovement.MovementsListViewModelFactory
 import com.example.iriscubeapp.R
 import SampleData
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
+import android.graphics.Color
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.get
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.observe
+import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_first.*
+
+
+
 
 const val FLOWER_ID = "movement id"
 
 class FirstFragment : Fragment() {
+
+    //lateinit var cardView : CardView
 
     private val newMovementActivityRequestCode = 1
     private val movementsListViewModel by viewModels<MovementListViewModel> {
@@ -39,6 +52,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_first, container, false)
 
@@ -57,12 +71,16 @@ class FirstFragment : Fragment() {
         recyclerView.adapter = movementAdapter
 
 
+
+
         movementsListViewModel.movementData.observe(viewLifecycleOwner, {
             it?.let {
                 movementAdapter.submitList(it as MutableList<SampleData>)
                 headerAdapter.updateMovementCount(it.size)
             }
         })
+
+        addConstraintSetAnimation(view)
 
 
         /*val fab: View = view.findViewById(R.id.fab)
@@ -71,6 +89,56 @@ class FirstFragment : Fragment() {
         }*/
 
         return view
+    }
+
+    private fun addConstraintSetAnimation(view: View) {
+
+        var isCoverView = false
+
+        val initialConstraint = ConstraintSet()
+        val coverConstraint = ConstraintSet()
+        coverConstraint.clone(context, R.layout.card_view)
+        val constraintLayout : ConstraintLayout = view.findViewById(R.id.fragment_first)
+        initialConstraint.clone(constraintLayout)
+
+        val cardView : CardView = view.findViewById(R.id.cardView)
+        val textView : TextView = view.findViewById(R.id.textConto)
+
+
+        cardView.setOnClickListener {
+            println("OK")
+            if (!isCoverView) {
+                TransitionManager.beginDelayedTransition(constraintLayout)
+                coverConstraint.applyTo(constraintLayout)
+
+                val anim = ValueAnimator()
+                anim.setIntValues(Color.BLACK, Color.WHITE)
+                anim.setEvaluator(ArgbEvaluator())
+                anim.addUpdateListener {
+                    textView.setTextColor(it.animatedValue as Int)
+                }
+                anim.duration = 300
+                anim.start()
+                isCoverView = true
+            }
+            else{
+                TransitionManager.beginDelayedTransition(constraintLayout)
+                initialConstraint.applyTo(constraintLayout)
+
+                val anim = ValueAnimator()
+                anim.setIntValues(Color.WHITE, Color.BLACK)
+                anim.setEvaluator(ArgbEvaluator())
+                anim.addUpdateListener {
+                    textView.setTextColor(it.animatedValue as Int)
+                }
+                anim.duration = 300
+                anim.start()
+                isCoverView = false
+            }
+
+        }
+
+
     }
 
 
@@ -82,7 +150,10 @@ class FirstFragment : Fragment() {
 
         // on below line we are creating a variable for our button
         // which we are using to dismiss our dialog.
+        val stb = AnimationUtils.loadAnimation(context,R.anim.start_anim_cardview2)
         val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
+
+        btnClose.startAnimation(stb)
 
         val titleText : TextView= view.findViewById(R.id.movement_title2)
         val valueText : TextView= view.findViewById(R.id.movement_value2)
@@ -91,6 +162,7 @@ class FirstFragment : Fragment() {
         titleText.text = "Titolo movimento: " + movement.title
         valueText.text = "Quantità movimento: " + movement.value.toString() + " €"
         descriptionText.text = "Descrizione movimento: " + movement.description
+
 
 
 
