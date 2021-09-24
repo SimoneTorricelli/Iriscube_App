@@ -22,14 +22,13 @@
     <TextView
         android:fontFamily="@font/poppins_bold"
         android:id="@+id/movement_title"
-        android:layout_width="28dp"
+        android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
-        android:text="null"
+        android:text="asdasda"
+        android:textSize="15sp"
         android:textAlignment="textStart"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/movement_image"
         app:layout_constraintTop_toTopOf="parent" />
 
