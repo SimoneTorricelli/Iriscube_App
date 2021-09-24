@@ -88,9 +88,9 @@ class FirstFragment : Fragment() {
         val valueText : TextView= view.findViewById(R.id.movement_value2)
         val descriptionText : TextView= view.findViewById(R.id.movement_description2)
 
-        titleText.text = movement.title
-        valueText.text = movement.value.toString()
-        descriptionText.text = movement.description
+        titleText.text = "Titolo movimento: " + movement.title
+        valueText.text = "Quantità movimento: " + movement.value.toString() + " €"
+        descriptionText.text = "Descrizione movimento: " + movement.description
 
 
 

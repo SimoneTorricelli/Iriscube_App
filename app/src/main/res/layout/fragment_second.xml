@@ -25,7 +25,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/idIVCourse"
             android:layout_toRightOf="@id/idIVCourse"
-            android:text=""
+            android:text="Titolo movimento : "
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -59,6 +59,8 @@
 
         <!--button for dismissing our dialog-->
         <Button
+            style="@style/ButtonStyle"
+            android:background="@drawable/primary_round"
             android:id="@+id/idBtnDismiss"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
