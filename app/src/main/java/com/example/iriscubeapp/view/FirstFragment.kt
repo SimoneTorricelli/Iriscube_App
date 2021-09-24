@@ -17,8 +17,13 @@ import com.example.exampleapp.recycleBankMovement.MovementsListViewModelFactory
 import com.example.iriscubeapp.R
 import SampleData
 import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.get
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_first.*
 
 const val FLOWER_ID = "movement id"
@@ -46,7 +51,7 @@ class FirstFragment : Fragment() {
         cardViewMoney.startAnimation(stb)
 
         val headerAdapter = HeaderAdapter()
-        val movementAdapter = RecycleMovementAdapter { sampleData -> adapterOnClick(sampleData) }
+        val movementAdapter = RecycleMovementAdapter { sampleData -> adapterOnClick(sampleData)}
         val recyclerView: RecyclerView = view.findViewById(R.id.recycle_view)
         recyclerView?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = movementAdapter
@@ -59,6 +64,7 @@ class FirstFragment : Fragment() {
             }
         })
 
+
         /*val fab: View = view.findViewById(R.id.fab)
         fab.setOnClickListener {
             fabOnClick()
@@ -69,7 +75,43 @@ class FirstFragment : Fragment() {
 
 
     private fun adapterOnClick(movement: SampleData) {
+        val dialog = context?.let { it1 -> BottomSheetDialog(it1) }
 
+        // on below line we are inflating a layout file which we have created.
+        val view = layoutInflater.inflate(R.layout.fragment_second, null)
+
+        // on below line we are creating a variable for our button
+        // which we are using to dismiss our dialog.
+        val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
+
+        val titleText : TextView= view.findViewById(R.id.movement_title2)
+        val valueText : TextView= view.findViewById(R.id.movement_value2)
+        val descriptionText : TextView= view.findViewById(R.id.movement_description2)
+
+        titleText.text = movement.title
+        valueText.text = movement.value.toString()
+        descriptionText.text = movement.description
+
+
+
+        // on below line we are adding on click listener
+        // for our dismissing the dialog button.
+        btnClose.setOnClickListener {
+            // on below line we are calling a dismiss
+            // method to close our dialog.
+            dialog?.dismiss()
+        }
+        // below line is use to set cancelable to avoid
+        // closing of dialog box when clicking on the screen.
+        dialog?.setCancelable(false)
+
+        // on below line we are setting
+        // content view to our view.
+        dialog?.setContentView(view)
+
+        // on below line we are calling
+        // a show method to display a dialog.
+        dialog?.show()
         /*
         val intent = Intent(this, MovementDetailActivity()::class.java)
         intent.putExtra(MOVEMENT_ID, movement.id)
@@ -77,15 +119,6 @@ class FirstFragment : Fragment() {
         */
 
     }
-
-    /* Adds sampleMovementData to MovementList when FAB is clicked. */
-    private fun fabOnClick() {
-        println("Fab Pressed")
-        //val intent = Intent(this, AddMovementActivity::class.java)
-        //startActivityForResult(intent, newMovementActivityRequestCode)
-    }
-
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
