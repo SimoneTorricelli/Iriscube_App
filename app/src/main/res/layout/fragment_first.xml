@@ -30,7 +30,7 @@
         android:id="@+id/view"
         android:layout_marginTop="0dp"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="210dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -39,7 +39,7 @@
             android:clickable="true"
             android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="160dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="10dp"
             android:outlineSpotShadowColor="@color/orange_2"
@@ -57,13 +57,13 @@
 
             <TextView
                 android:fontFamily="@font/poppins_bold"
-                android:padding="12dp"
+                android:padding="20dp"
                 android:id="@+id/textConto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|left"
                 android:paddingBottom="40dp"
-                android:text="Il mio conto preferito"
+                android:text="Il mio conto"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -83,11 +83,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="163dp"
+                android:layout_height="90dp"
                 android:layout_gravity="top|right"
                 android:paddingHorizontal="20dp"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:src="@mipmap/diamond" />
 
         </androidx.cardview.widget.CardView>
 
