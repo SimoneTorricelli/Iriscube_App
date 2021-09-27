@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity(),ContractInterface.View{
      * [AppCompatActivity] functions
      * */
 
+    //MVP Branch
+
     private var presenter: Presenter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
