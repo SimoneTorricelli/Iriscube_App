@@ -35,4 +35,5 @@ class ExampleInstrumentedTest {
         // ...then the result should be the expected one.
         assertEquals(result, FAKE_STRING)
     }
+
 }
