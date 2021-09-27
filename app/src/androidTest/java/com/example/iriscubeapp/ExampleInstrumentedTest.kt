@@ -31,7 +31,7 @@ class ExampleInstrumentedTest {
         val myObjectUnderTest = FirstFragment()
 
         // ...when the string is returned from the object under test...
-        val result: String = myObjectUnderTest.getHelloWordlString()
+        val result: String = myObjectUnderTest.getHelloWorldString()
         // ...then the result should be the expected one.
         assertEquals(result, FAKE_STRING)
     }

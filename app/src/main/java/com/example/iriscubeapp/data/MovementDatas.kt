@@ -8,9 +8,9 @@ import kotlinx.coroutines.coroutineScope
 import kotlin.collections.ArrayList
 
 
-suspend fun MovementDatas(resources: Resources,context: Context): List<SampleData> = coroutineScope {
+suspend fun movementDatas(resources: Resources,context: Context): List<SampleData> = coroutineScope {
     val url = "https://mocki.io/v1/4da288b1-5179-4202-8cde-9fb6895f7c69"
-    var list = ArrayList<SampleData>()
+    val list = ArrayList<SampleData>()
     val que = Volley.newRequestQueue(context)
     val jsonObjectRequest = JsonArrayRequest(
         Request.Method.GET, url, null,
@@ -18,9 +18,12 @@ suspend fun MovementDatas(resources: Resources,context: Context): List<SampleDat
             println(response)
             val gson = GsonBuilder().create()
             //val Model= gson.fromJson(response.getString(0),Array<sampleData>::class.java).toList()
-            var i: Int = 0
+            var i = 0
             while (i < response.length()) {
-                val bankAccount = gson.fromJson(response.getString(i),SampleData(description = "",title = "",value = 0.0,id = 0).javaClass)
+                val bankAccount = gson.fromJson(
+                    response.getString(i),
+                    SampleData(description = "", title = "", value = 0.0, id = 0).javaClass
+                )
                 println(bankAccount.toString())
                 list.add(bankAccount)
                 ++i

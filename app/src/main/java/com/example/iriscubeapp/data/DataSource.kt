@@ -10,8 +10,8 @@ import kotlinx.coroutines.runBlocking
 /* Handles operations on MovementLiveData and holds details about it. */
 class DataSource(val resources: Resources, val context: Context) {
 
-    suspend fun takeList() = coroutineScope {
-        val initialMovementList = MovementDatas(resources,context)
+    private suspend fun takeList() = coroutineScope {
+        val initialMovementList = movementDatas(resources,context)
         val movementLiveData = MutableLiveData(initialMovementList)
         delay(1000L)
         println("Passato 1 secondo invio")

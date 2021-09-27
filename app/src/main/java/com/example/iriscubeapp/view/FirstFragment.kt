@@ -42,8 +42,6 @@ const val FLOWER_ID = "movement id"
 
 class FirstFragment : Fragment() {
 
-    //lateinit var cardView : CardView
-
     private val newMovementActivityRequestCode = 1
     private val movementsListViewModel by viewModels<MovementListViewModel> {
         MovementsListViewModelFactory(context)
@@ -94,7 +92,7 @@ class FirstFragment : Fragment() {
 
 
         movementsListViewModel.movementData.observe(viewLifecycleOwner, {
-            it?.let {
+            it.let {
                 movementAdapter.submitList(it as MutableList<SampleData>)
                 headerAdapter.updateMovementCount(it.size)
             }
@@ -111,8 +109,8 @@ class FirstFragment : Fragment() {
         return view
     }
 
-    fun getHelloWordlString(): String {
-        return "HELLO WORLD"
+    fun getHelloWorldString(): String {
+        return "HELLO_WORLD"
     }
 
     private fun addConstraintSetAnimation(view: View) {
