@@ -3,12 +3,22 @@ import android.content.Context
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 /* Handles operations on MovementLiveData and holds details about it. */
-class DataSource(resources: Resources,context: Context) {
-    private val initialMovementList = MovementDatas(resources,context)
-    private val movementLiveData = MutableLiveData(initialMovementList)
+class DataSource(val resources: Resources, val context: Context) {
 
+    suspend fun takeList() = coroutineScope {
+        val initialMovementList = MovementDatas(resources,context)
+        val movementLiveData = MutableLiveData(initialMovementList)
+        delay(1000L)
+        println("Passato 1 secondo invio")
+        return@coroutineScope movementLiveData
+    }
+
+    /*
     /* Adds movement to liveData and posts value. */
     fun addMovement(movement: SampleData) {
         val currentList = movementLiveData.value
@@ -37,10 +47,10 @@ class DataSource(resources: Resources,context: Context) {
              movements.firstOrNull{ id == id}
         }
         return null
-    }
+    }*/
 
-    fun getMovementList(): LiveData<List<SampleData>> {
-        return movementLiveData
+    fun getMovementList(): LiveData<List<SampleData>> = runBlocking {
+        return@runBlocking takeList()
     }
 
     companion object {

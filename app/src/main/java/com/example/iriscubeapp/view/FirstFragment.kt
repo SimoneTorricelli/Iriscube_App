@@ -15,26 +15,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.exampleapp.recycleBankMovement.MovementListViewModel
 import com.example.exampleapp.recycleBankMovement.MovementsListViewModelFactory
 import com.example.iriscubeapp.R
-import SampleData
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.content.res.AssetManager
 import android.graphics.Color
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.get
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
-
 import androidx.lifecycle.observe
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.android.synthetic.main.fragment_first.*
+import android.graphics.BitmapFactory
 
-
+import SampleData
+import android.content.ContentValues.TAG
+import android.util.Log
+import java.io.InputStream
+import java.lang.Exception
 
 
 const val FLOWER_ID = "movement id"
@@ -48,6 +49,7 @@ class FirstFragment : Fragment() {
         MovementsListViewModelFactory(context)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +62,21 @@ class FirstFragment : Fragment() {
         val stb = AnimationUtils.loadAnimation(context,R.anim.start_anim_cardview2)
         val cardView : CardView = view.findViewById(R.id.cardView)
         val cardViewMoney : CardView = view.findViewById(R.id.cardViewMoney)
+        val diamondImage : ImageView = view.findViewById(R.id.diamondImage)
+
+        val assetManager : AssetManager? = context?.assets
+        val i = 0
+        for (i in 0..1)
+        println(assetManager?.list("")?.elementAt(i))
+        try {
+            val diamondAsset: InputStream = assetManager!!.open("app/assets/diamond.png")
+
+            val bitmap = BitmapFactory.decodeStream(diamondAsset)
+            diamondImage.setImageBitmap(bitmap)
+        }catch (e : Exception) {
+            Log.e(TAG, e.toString())
+
+        }
 
         cardView.startAnimation(ttb)
         cardViewMoney.startAnimation(stb)
@@ -92,6 +109,10 @@ class FirstFragment : Fragment() {
         }*/
 
         return view
+    }
+
+    fun getHelloWordlString(): String {
+        return "HELLO WORLD"
     }
 
     private fun addConstraintSetAnimation(view: View) {

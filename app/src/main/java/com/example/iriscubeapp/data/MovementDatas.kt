@@ -4,10 +4,11 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
+import kotlinx.coroutines.coroutineScope
 import kotlin.collections.ArrayList
 
 
-fun MovementDatas(resources: Resources,context: Context): List<SampleData> {
+suspend fun MovementDatas(resources: Resources,context: Context): List<SampleData> = coroutineScope {
     val url = "https://mocki.io/v1/4da288b1-5179-4202-8cde-9fb6895f7c69"
     var list = ArrayList<SampleData>()
     val que = Volley.newRequestQueue(context)
@@ -30,5 +31,5 @@ fun MovementDatas(resources: Resources,context: Context): List<SampleData> {
         }
     )
     que.add(jsonObjectRequest)
-    return list
+    return@coroutineScope list
 }

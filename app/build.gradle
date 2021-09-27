@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
 
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+
     defaultConfig {
         applicationId "com.example.iriscubeapp"
         minSdkVersion 21
@@ -29,6 +33,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

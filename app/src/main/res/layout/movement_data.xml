@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
         android:text="null"
         android:textSize="15sp"
         android:textAlignment="textStart"
@@ -39,7 +39,7 @@
         android:id="@+id/movement_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="7dp"
         android:layout_marginLeft="40dp"
         android:text="null"
         android:textAlignment="textStart"
@@ -49,20 +49,20 @@
         app:layout_constraintTop_toBottomOf="@+id/movement_title" />
 
     <TextView
-        android:fontFamily="@font/poppins_bold"
         android:id="@+id/movement_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="null"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/orange_2"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toEndOf="@+id/movement_description"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.507" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
