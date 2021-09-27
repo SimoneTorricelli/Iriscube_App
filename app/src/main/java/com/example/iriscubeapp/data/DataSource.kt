@@ -1,17 +1,17 @@
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.res.Resources
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 /* Handles operations on MovementLiveData and holds details about it. */
 class DataSource(val resources: Resources, val context: Context) {
 
     private suspend fun takeList() = coroutineScope {
-        val initialMovementList = movementDatas(resources,context)
+        val initialMovementList = movementDatas(context)
         val movementLiveData = MutableLiveData(initialMovementList)
         delay(1000L)
         println("Passato 1 secondo invio")
@@ -49,7 +49,8 @@ class DataSource(val resources: Resources, val context: Context) {
         return null
     }*/
 
-    fun getMovementList(): LiveData<List<SampleData>> = runBlocking {
+    fun getMovementList(): LiveData<List<SampleData>> = runBlocking(CoroutineName("MakeList") + Dispatchers.Default) {
+        println("[${Thread.currentThread().name}]")
         return@runBlocking takeList()
     }
 

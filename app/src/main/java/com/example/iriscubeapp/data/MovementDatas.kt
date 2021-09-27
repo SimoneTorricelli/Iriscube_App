@@ -8,7 +8,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlin.collections.ArrayList
 
 
-suspend fun movementDatas(resources: Resources,context: Context): List<SampleData> = coroutineScope {
+suspend fun movementDatas(context: Context): List<SampleData> = coroutineScope {
     val url = "https://mocki.io/v1/4da288b1-5179-4202-8cde-9fb6895f7c69"
     val list = ArrayList<SampleData>()
     val que = Volley.newRequestQueue(context)

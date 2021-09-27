@@ -12,10 +12,8 @@ class Presenter(_view: ContractInterface.View,model : ContractInterface.Model): 
     }
 
     override fun incrementValue() {
-        model.incrementCounter()
         view.updateViewData()
     }
 
-    override fun getCounter() = model.getCounter().toString()
 
 }

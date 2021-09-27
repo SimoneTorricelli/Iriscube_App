@@ -1,13 +1,27 @@
 package com.example.iriscubeapp.model
 
+import SampleData
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.iriscubeapp.contract.ContractInterface
+import kotlinx.coroutines.*
+import movementDatas
 
-class Model : ContractInterface.Model{
-    private var mCounter = 0
+class Model(context: Context) : ContractInterface.Model{
 
-    override fun getCounter()= mCounter
-
-    override fun incrementCounter() {
-        mCounter++
+    private suspend fun takeList(context: Context) = coroutineScope {
+        val initialMovementList = movementDatas(context)
+        val movementLiveData = MutableLiveData(initialMovementList)
+        delay(1000L)
+        println("Passato 1 secondo invio")
+        return@coroutineScope movementLiveData
     }
+
+    override fun getMovementList(context: Context): MutableLiveData<List<SampleData>> = runBlocking(CoroutineName("MakeList") + Dispatchers.Default) {
+        println("[${Thread.currentThread().name}]")
+        return@runBlocking takeList(context)
+    }
+
+
 }

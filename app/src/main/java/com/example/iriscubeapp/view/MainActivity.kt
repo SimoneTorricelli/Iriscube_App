@@ -19,17 +19,15 @@ class MainActivity : AppCompatActivity(),ContractInterface.View{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter = Presenter(this, Model())
+        presenter = Presenter(this, Model(baseContext))
         supportFragmentManager.beginTransaction().replace(R.id.mainActivityFragmentContainer,FirstFragment()).commit()
 
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
     }
 
     override fun updateViewData() {
-        TODO("Not yet implemented")
     }
 
 

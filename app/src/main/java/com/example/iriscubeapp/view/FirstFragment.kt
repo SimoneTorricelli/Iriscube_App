@@ -32,6 +32,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import android.graphics.BitmapFactory
 
 import SampleData
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.util.Log
 import java.io.InputStream
@@ -67,8 +68,7 @@ class FirstFragment : Fragment() {
         for (i in 0..1)
         println(assetManager?.list("")?.elementAt(i))
         try {
-            val diamondAsset: InputStream = assetManager!!.open("app/assets/diamond.png")
-
+            val diamondAsset: InputStream = assetManager!!.open("diamond.png")
             val bitmap = BitmapFactory.decodeStream(diamondAsset)
             diamondImage.setImageBitmap(bitmap)
         }catch (e : Exception) {
@@ -164,6 +164,7 @@ class FirstFragment : Fragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun adapterOnClick(movement: SampleData) {
         val dialog = context?.let { it1 -> BottomSheetDialog(it1) }
 

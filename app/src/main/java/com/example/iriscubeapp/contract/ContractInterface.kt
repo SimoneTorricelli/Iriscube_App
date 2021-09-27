@@ -1,5 +1,9 @@
 package com.example.iriscubeapp.contract
 
+import SampleData
+import android.content.Context
+import androidx.lifecycle.MutableLiveData
+
 interface ContractInterface {
 
     interface View {
@@ -9,12 +13,10 @@ interface ContractInterface {
 
     interface Presenter {
         fun incrementValue()
-        fun getCounter(): String
     }
 
     interface Model {
-        fun getCounter(): Int
-        fun incrementCounter()
+        fun getMovementList(context: Context): MutableLiveData<List<SampleData>>
     }
 
 }
